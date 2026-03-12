@@ -130,6 +130,96 @@ Since you mentioned that the Auto Scaling Group launched instances in different 
 
  e. After SSHing into the Bastion host, use the `ls` command to check if the `aws_demo.pem` file is present. If it's not there, double-check your previous commands.<br>
  
+ f. Now, you can SSH into the private instance using the following command, replacing `<private IP>` with the private instance's IP address:<br>
+   
+    
+      ssh -i aws_demo.pem ubuntu@<private IP>
+
+ g. We will deploy our application on one of the private instances to test the load balancer.<br>
+ 
+ h. After successfully SSHing into the private instance, create an HTML file using the Vim text editor:<br>
+
+   
+      vim demo.html
+
+ i. This will open the Vim editor. Copy and paste any HTML content you like into the editor.<br>
+ 
+ j. For example:<br>
+ 
+      html
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <title>Page Title</title>
+      </head>
+      <body>
+
+      <h1>This is an AWS Demo Production</h1>
+      </body>
+      </html>
+   k. After pasting the content, save the file by pressing 'Esc' to exit insert mode and then entering `:w` to save.<br>
+   
+   l. Finally, start a Python HTTP server on port 8000 to deploy your application on the private instance:<br>
+
+     python3 -m http.server 8000
+
+   Now, your application is deployed on the private instance on port 8000.
+### Note :
+We intentionally deployed the application on only one instance to check if the Load Balancer will distribute 50% of the traffic to one instance (which will receive a response) and 50% to another instance (which will not receive a response).
+
+### Step 4 :
+#### Creating the Load Balancer :
+
+1. Access the EC2 Terminal.
+2. Follow the steps outlined below.<br>
+
+<img width="1915" height="868" alt="img1" src="https://github.com/user-attachments/assets/392d78cf-2ffc-42ce-847b-841dece16cba" /><br>
+
+<img width="1918" height="875" alt="img2" src="https://github.com/user-attachments/assets/d17b3056-165f-4b2e-a4e7-2f086e917227" /><br>
+
+<img width="1918" height="877" alt="img3" src="https://github.com/user-attachments/assets/091974d5-45f8-4b61-bc07-4923092bf4de" /><br>
+
+<img width="1918" height="867" alt="img4" src="https://github.com/user-attachments/assets/202286d5-c136-4300-9fe7-a4694af78f8e" /><br>
+
+<img width="1916" height="872" alt="img5" src="https://github.com/user-attachments/assets/ce1d62f5-d8cb-4ee3-bbc7-3253477d8b46" /><br>
+
+
+<img width="1918" height="867" alt="img6" src="https://github.com/user-attachments/assets/2b5dba07-075d-4bbe-baa7-2b0563a386ec" /><br>
+
+<img width="1918" height="871" alt="img7" src="https://github.com/user-attachments/assets/4c828a81-add2-4077-b52b-4f5d5f1b0fa4" /><br>
+
+<img width="1918" height="876" alt="img8" src="https://github.com/user-attachments/assets/c9d85e33-0889-4578-a6b8-aded1ce4bd96" /><br>
+
+<img width="1918" height="871" alt="img9" src="https://github.com/user-attachments/assets/b487c5df-63a7-4fc1-a28e-0cbaa8987a60" /><br>
+
+<img width="1918" height="867" alt="img10" src="https://github.com/user-attachments/assets/c93aed3c-5fb2-4dc6-9238-71cc4c453f7a" />br>
+
+<img width="1918" height="877" alt="img11" src="https://github.com/user-attachments/assets/9145dbe4-5ecc-42dd-a555-a6d4e86aba56" /><br>
+
+<img width="1918" height="871" alt="img12" src="https://github.com/user-attachments/assets/c7d6a77a-5b03-47a6-aa85-1ea87801ac0e" /><br>
+
+<img width="1917" height="858" alt="img13" src="https://github.com/user-attachments/assets/59325254-5d3a-477c-902d-f2f6a63e4e6b" /><br>
+
+<img width="1920" height="961" alt="demo image" src="https://github.com/user-attachments/assets/b7d867d2-c960-4a90-8bee-c8b8b0d10828" /><br>
+
+
+
+Now We Successfully deployed Application securely in Private instance , We can access it through Internet using Load Balancer Securely .
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
  
     
       
